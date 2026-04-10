@@ -48,16 +48,9 @@ hamburger?.addEventListener('click', () => {
   hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
 });
 
-const successFlag = form?.dataset.successFlag || 'cislunar-eu-contact-submitted';
-form?.addEventListener('submit', () => {
-  window.sessionStorage.setItem(successFlag, '1');
-});
-
 const sent = new URLSearchParams(window.location.search).get('sent');
-const wasSubmittedHere = window.sessionStorage.getItem(successFlag) === '1';
-if (sent === '1' && wasSubmittedHere && form && success) {
+if (sent === '1' && form && success) {
   form.style.display = 'none';
   success.style.display = 'block';
-  window.sessionStorage.removeItem(successFlag);
   history.replaceState(null, '', window.location.pathname + window.location.hash);
 }
