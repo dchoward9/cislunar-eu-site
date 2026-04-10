@@ -52,5 +52,8 @@ const sent = new URLSearchParams(window.location.search).get('sent');
 if (sent === '1' && form && success) {
   form.style.display = 'none';
   success.style.display = 'block';
+  window.setTimeout(() => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 0);
   history.replaceState(null, '', window.location.pathname + window.location.hash);
 }
